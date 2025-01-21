@@ -1,6 +1,10 @@
 import streamlit as st
 from chatbot.chatbot import ChatBot
 from chatbot.workflow import build_workflow 
+__import__('pysqlite3')
+import sys
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+
 
 # Initialize the chatbot and workflow
 chatbot = ChatBot()
