@@ -2,6 +2,7 @@ from langgraph.graph import StateGraph, START, END
 from typing import List
 from typing_extensions import TypedDict
 from .retrieval import retrieve
+from langchain.schema import Document
 from .grading import grade_documents
 from .generation import generate
 from .query_transformation import transform_query
