@@ -8,3 +8,5 @@ streamlit
 langchain_groq
 chromadb
 tiktoken
+beautifulsoup4
+
