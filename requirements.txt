@@ -1,12 +1,10 @@
-langchain
-langchain_community
+langchain==0.3.9 
 langgraph
 langserve[all]
-python-dotenv
-langchain_google_genai
+langchain-google-genai==2.0.6
 streamlit
 langchain_groq
-chromadb
+chromadb== 0.5.20
 tiktoken
 beautifulsoup4
 
