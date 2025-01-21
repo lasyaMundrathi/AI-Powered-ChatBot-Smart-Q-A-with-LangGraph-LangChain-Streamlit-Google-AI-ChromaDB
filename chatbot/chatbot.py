@@ -4,8 +4,8 @@ from langchain_community.tools.tavily_search import TavilySearchResults
 import os
 
 # Set environment variables from deployment settings (GitHub Actions, Cloud, etc.)
-GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY", "default_google_api_key")
-TAVILY_API_KEY = os.environ.get("TAVILY_API_KEY", "default_tavily_api_key")
+GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")
+TAVILY_API_KEY = os.environ.get("TAVILY_API_KEY")
 os.environ["USER_AGENT"] = os.environ.get("USER_AGENT", "myagent")
 
 class ChatBot:
