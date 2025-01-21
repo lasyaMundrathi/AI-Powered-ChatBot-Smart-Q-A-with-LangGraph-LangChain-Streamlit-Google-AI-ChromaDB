@@ -4,7 +4,7 @@ from chatbot.workflow import build_workflow
 
 # Initialize the chatbot and workflow
 chatbot = ChatBot()
-workflow = build_workflow()
+workflow = build_workflow(chatbot)
 
 # Set up the app title and layout
 st.set_page_config(
