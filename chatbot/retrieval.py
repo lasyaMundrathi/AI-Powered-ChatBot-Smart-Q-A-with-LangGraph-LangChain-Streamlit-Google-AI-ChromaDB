@@ -1,7 +1,6 @@
 from langchain_community.document_loaders import WebBaseLoader
 from langchain_community.vectorstores import Chroma
 import chromadb
-from chromadb.config import Settings
 
 def retrieve(chatbot, state):
     """Retrieve documents based on the question."""
@@ -12,20 +11,12 @@ def retrieve(chatbot, state):
         "https://lilianweng.github.io/posts/2023-10-25-adv-attack-llm/",
     ]
     
-    # Improved WebBaseLoader with error handling
-    docs = []
-    for url in urls:
-        try:
-            loader = WebBaseLoader(url)
-            loader.requests_kwargs = {'verify': False}  # Bypass SSL verification
-            docs.extend(loader.load())
-        except Exception as e:
-            print(f"Error loading {url}: {e}")
-    
-    # Split documents
-    docs_splits = chatbot.text_splitter.split_documents(docs)
+    # Load documents
+    docs = [WebBaseLoader(url).load() for url in urls]
+    docs_list = [item for sublist in docs for item in sublist]
+    docs_splits = chatbot.text_splitter.split_documents(docs_list)
 
-    # Chroma initialization with robust configuration
+    # Create Chroma vectorstore
     vectorstore = Chroma.from_documents(
         documents=docs_splits, 
         collection_name="rag-chroma", 
@@ -33,11 +24,8 @@ def retrieve(chatbot, state):
         persist_directory="./chroma_db"
     )
     
-    # Create retriever with enhanced search parameters
-    retriever = vectorstore.as_retriever(
-        search_type="mmr",  # Maximum Marginal Relevance retrieval
-        search_kwargs={"k": 5}  # Retrieve top 5 most relevant documents
-    )
+    # Create retriever
+    retriever = vectorstore.as_retriever()
 
     question = state["question"]
     documents = retriever.invoke(question)
