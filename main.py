@@ -1,5 +1,5 @@
 import streamlit as st
-from chatbot import ChatBot
+from chatbot.chatbot import ChatBot
 
 # Initialize the chatbot and workflow
 chatbot = ChatBot()
