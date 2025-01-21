@@ -1,9 +1,10 @@
 import streamlit as st
 from chatbot.chatbot import ChatBot
+from chatbot.workflow import build_workflow 
 
 # Initialize the chatbot and workflow
 chatbot = ChatBot()
-workflow = chatbot.build_workflow()
+workflow = build_workflow()
 
 # Set up the app title and layout
 st.set_page_config(
