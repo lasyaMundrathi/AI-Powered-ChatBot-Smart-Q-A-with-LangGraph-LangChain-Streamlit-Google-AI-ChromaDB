@@ -3,6 +3,12 @@
 ## 🌟 Overview
 
 This AI-powered chatbot leverages state-of-the-art technologies to provide intelligent information retrieval and response generation. Using LangGraph, LangChain, Streamlit, Google Generative AI, and ChromaDB, the chatbot efficiently retrieves relevant documents, grades their relevance, and generates meaningful responses.
+## Architecture
+
+<img src="https://github.com/user-attachments/assets/ae101545-c3e7-4721-8730-ceecab904b43" width="500"/>
+
+
+
 
 ## 🔄 Workflow Breakdown
 
